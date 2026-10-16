@@ -1,0 +1,49 @@
+# Environments, credentials and local configuration
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+experiment.yaml
+experiment_config.local.yaml
+*.local.yaml
+
+# Python caches and build products
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Instrument data and generated scientific results stay local
+data/
+raw/
+inputs/
+outputs/
+output/
+results/
+reports/
+*.csv
+*.tsv
+*.xlsx
+*.npz
+*.npy
+*.zip
+results.json
+errors.json
+verification.json
+run_log.jsonl
+config_used.yaml
+figures_manifest.json
+
+# Desktop/editor state
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

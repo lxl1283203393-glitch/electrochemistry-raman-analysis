@@ -1,0 +1,130 @@
+# 未知实验参数必须保留 null；配置说明见 references/configuration.md
+experiment:
+  sample_name: null
+  preparation_notes: null
+  electrolyte: null
+  ph: null
+  reference_electrode: null
+  reference_fill: null
+  temperature_c: null
+  potential_unit: V
+  scan_mode: null
+  hold_time_s: null
+  laser_wavelength_nm: null
+  laser_power_mw: null
+  objective_magnification: null
+  measurement_position: null
+  ir_corrected: null
+  rhe_offset_v: null
+  allow_approximate_rhe: false
+  optical_path_id: null
+filename_overrides: {}
+blank:
+  files: []
+  type: null
+preprocessing:
+  channel: dark_subtracted
+  despike:
+    enabled: true
+    threshold: 10
+    kernel_size: 5
+  smooth:
+    enabled: true
+    window_length: 7
+    polyorder: 2
+  baseline:
+    method: asls
+    lam: 1000000.0
+    p: 0.01
+    max_iter: 100
+    tol: 0.001
+  normalization: none
+  background:
+    enabled: false
+    file: null
+    scale: 1.0
+    conditions_verified: false
+  sensitivity:
+    enabled: true
+    methods:
+    - asls
+    - arpls
+    - airpls
+    lam_factors:
+    - 0.3
+    - 1
+    - 3
+    smooth_windows:
+    - 5
+    - 7
+    - 9
+peaks:
+  prominence: null
+  prominence_sigma: 5
+  min_height: null
+  min_snr: 5
+  noise_sigma_floor: null
+  distance_cm1: 8
+  min_width_cm1: 1
+  max_width_cm1: null
+  local_noise_window_cm1: 80
+  broad_band_fwhm_cm1: 100
+  sensitivity_factors:
+  - 0.75
+  - 1
+  - 1.25
+fitting:
+  windows:
+  - - 200
+    - 800
+  shapes:
+  - gaussian
+  - lorentzian
+  - pseudo_voigt
+  max_components: 3
+  multistart: 6
+  seed: 0
+  criterion: bic
+  min_fwhm_cm1: null
+  max_fwhm_cm1: null
+  min_component_snr: 3
+  max_parameter_correlation: 0.98
+  boundary_tolerance: 0.01
+  stability_rtol: 0.1
+  max_nfev: 3000
+  initial_components: null
+plotting:
+  dpi: 300
+  figsize:
+  - 10
+  - 6
+  regions:
+  - - 200
+    - 800
+  - - 2800
+    - 3800
+  formats:
+  - png
+  - pdf
+  - svg
+  max_annotated_records: 6
+  max_fit_panels: 6
+  stack_offset: null
+output:
+  formats:
+  - markdown
+  - html
+  save_arrays: true
+qc:
+  axis_min_cm1: -1000
+  axis_max_cm1: 10000
+  raw_dark_atol: 0.001
+  raw_dark_rtol: 1.0e-05
+  spike_zscore: 12
+  saturation_level: null
+multivariate:
+  enabled: false
+  method: pca
+  n_components: 2
+  normalization: vector
+  seed: 42
