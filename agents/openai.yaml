@@ -1,4 +1,4 @@
 interface:
-  display_name: "Optosky Raman 分析"
+  display_name: "Electrochemistry Raman analysis"
   short_description: "审计 Optosky 原位 Raman 数据并生成可追溯的处理结果与科研图表"
-  default_prompt: "使用 $optosky-raman-analysis 审计并分析指定文件夹的原位 Raman CSV，保留原始数据并生成可追溯报告。"
+  default_prompt: "使用 $electrochemistry-raman-analysis 审计并分析指定文件夹的原位 Raman CSV，保留原始数据并生成可追溯报告。"

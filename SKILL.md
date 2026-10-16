@@ -1,9 +1,9 @@
 ---
-name: optosky-raman-analysis
+name: electrochemistry-raman-analysis
 description: Analyze Optosky Raman Microscope CSV exports with executable RamanSPy preprocessing, quality audits, candidate bands, constrained mathematical fits, and traceable electrochemical potential or batch comparisons. Use for folder-based in situ Raman analysis; chemical assignments and mechanisms require separate evidence review.
 ---
 
-# Optosky 原位 Raman 分析
+# Electrochemistry Raman analysis
 
 使用本目录的 Python 工具完成计算；安装和四种命令见 [README.md](README.md)。不得只给出提示词或凭图估算结果。输入目录、样品、参比及处理参数由用户数据和配置确定，不使用内置样品结论。
 
@@ -13,7 +13,7 @@ description: Analyze Optosky Raman Microscope CSV exports with executable RamanS
 4. 查看输出表、处理历史、图表清单及报告；实际打开关键 PNG，检查原始全谱、可疑光谱和拟合残差。图表清单的 `skipped` 要解释原因，`error` 属于失败。候选峰、基线及拟合的合并面板受配置数量上限控制，完整候选与拟合结果保留在表中。
 5. 按 [科研规则](references/scientific_rules.md) 和 [解释边界](references/interpretation_guidelines.md) 区分直接观察、支持性解释、待验证假设与无法判断。每项计算发现关联文件、处理方法、参数、表和图；没有独立重复只做描述性分析。
 
-可移植入口：`python scripts/main.py --mode analyze --input INPUT --config assets/experiment_config.yaml --output OUTPUT`。安装后也可用 `optosky-raman`。`report --results EXISTING --output REPORT` 重建报告，不重新处理光谱。配置字段详见 [配置说明](references/configuration.md)。
+可移植入口：`python scripts/main.py --mode analyze --input INPUT --config assets/experiment_config.yaml --output OUTPUT`。安装后也可用 `electrochemistry-raman`，兼容命令 `optosky-raman` 保留。`report --results EXISTING --output REPORT` 重建报告，不重新处理光谱。配置字段详见 [配置说明](references/configuration.md)。
 
 遇到错误时保留已有输出，报告具体文件和原因；不悄悄跳过 RamanSPy、改写数据、猜测电位或强行得到拟合。检查退出码及错误表后修正输入/配置并重跑。未取得真实原始文件时，将验证明确标为模拟数据的软件测试。缺参比、内充液、pH、温度或 iR 信息时，保留原始参比；近似 RHE 换算必须注明假设。
 

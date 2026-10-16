@@ -27,7 +27,7 @@ from .report import generate_report
 
 def _versions() -> dict:
     packages=['ramanspy','numpy','scipy','pandas','matplotlib','pybaselines','PyYAML','scikit-learn']
-    versions={'python':platform.python_version(),'platform':platform.platform(),'optosky-raman-analysis':__version__}
+    versions={'python':platform.python_version(),'platform':platform.platform(),'electrochemistry-raman-analysis':__version__}
     for name in packages:
         try: versions[name]=version(name)
         except PackageNotFoundError: versions[name]='not_installed'

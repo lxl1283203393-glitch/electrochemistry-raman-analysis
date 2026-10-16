@@ -9,7 +9,7 @@ from .report import generate_report
 
 
 def main(argv: list[str]|None=None) -> int:
-    parser=argparse.ArgumentParser(description='Auditable Optosky RamanSPy analysis')
+    parser=argparse.ArgumentParser(description='Electrochemistry Raman analysis: auditable Optosky RamanSPy processing')
     parser.add_argument('--mode',required=True,choices=['audit','analyze','compare','report'])
     parser.add_argument('--input',nargs='+',type=Path,help='CSV batch directories')
     parser.add_argument('--config',type=Path,help='YAML experiment/analysis settings')

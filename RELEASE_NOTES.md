@@ -1,4 +1,14 @@
-# v1.0.0 — Optosky Raman analysis
+# v1.0.1 — Electrochemistry Raman analysis
+
+本补丁版本统一项目命名，不改变光谱处理算法。
+
+- GitHub 仓库和 Skill 标识改为 `electrochemistry-raman-analysis`。
+- 显示名、README、报告标题、版本记录与安装包同步更新。
+- 新 CLI 为 `electrochemistry-raman`；保留 `optosky-raman` 兼容入口，Python 内部模块保持 `optosky_raman`。
+- 108 项自动测试通过，完整 ZIP 包含新 Skill 根目录及 SHA256 校验。
+- v1.0.0 保留作历史版本。
+
+## v1.0.0 — 初始版本
 
 首个公开发布版本，提供可安装的 Codex Skill 和基于 RamanSPy 的可执行 Python 分析工具。
 

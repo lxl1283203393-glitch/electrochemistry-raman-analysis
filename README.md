@@ -1,23 +1,23 @@
-# Optosky Raman analysis
+# Electrochemistry Raman analysis
 
 可执行的 Codex Skill 和 Python 分析包，处理 Optosky Raman Microscope CSV。RamanSPy 负责光谱对象及预处理，NumPy/Pandas/SciPy 补充导入、质量审计、候选峰和数学峰形拟合；Matplotlib 导出 PNG/PDF/SVG 和逐图数据。程序不自动给出物相或 HER 机制结论。
 
 ## Windows 安装
 
-GitHub 仓库：[lxl1283203393-glitch/optosky-raman-analysis](https://github.com/lxl1283203393-glitch/optosky-raman-analysis)。完整 Skill 压缩包见 [Releases](https://github.com/lxl1283203393-glitch/optosky-raman-analysis/releases)。下载后可用附带的 `.sha256` 和 `MANIFEST.sha256` 核对完整性。仓库不包含私人原始实验数据或处理报告。
+GitHub 仓库：[lxl1283203393-glitch/electrochemistry-raman-analysis](https://github.com/lxl1283203393-glitch/electrochemistry-raman-analysis)。完整 Skill 压缩包见 [Releases](https://github.com/lxl1283203393-glitch/electrochemistry-raman-analysis/releases)。下载后可用附带的 `.sha256` 和 `MANIFEST.sha256` 核对完整性。仓库不包含私人原始实验数据或处理报告。
 
 也可直接克隆到 Codex 用户技能目录：
 
 ```powershell
-git clone https://github.com/lxl1283203393-glitch/optosky-raman-analysis.git "$env:USERPROFILE\.agents\skills\optosky-raman-analysis"
+git clone https://github.com/lxl1283203393-glitch/electrochemistry-raman-analysis.git "$env:USERPROFILE\.agents\skills\electrochemistry-raman-analysis"
 ```
 
 需要 Python 3.11 或更新版本。建议使用 Python 3.11–3.14 与独立虚拟环境；具体已测试环境及结果见交付的验证记录。路径中有中文或空格时保留 PowerShell 引号。
 
-将完整项目解压到用户技能目录，例如 `$env:USERPROFILE\.agents\skills\optosky-raman-analysis`。当前 Codex 文档使用 `.agents/skills`；已有 `.codex/skills` 安装也可保留，避免两个目录同时放同名旧版本。重启 Codex 或新建会话使技能被发现。也可从任意项目目录使用命令行工具，无需安装到技能目录。
+将完整项目解压到用户技能目录，例如 `$env:USERPROFILE\.agents\skills\electrochemistry-raman-analysis`。当前 Codex 文档使用 `.agents/skills`；已有 `.codex/skills` 安装也可保留，避免两个目录同时放同名旧版本。重启 Codex 或新建会话使技能被发现。也可从任意项目目录使用命令行工具，无需安装到技能目录。
 
 ```powershell
-Set-Location "$env:USERPROFILE\.agents\skills\optosky-raman-analysis"
+Set-Location "$env:USERPROFILE\.agents\skills\electrochemistry-raman-analysis"
 py -3.11 -m venv .venv
 & .\.venv\Scripts\python.exe -m pip install --upgrade pip
 & .\.venv\Scripts\python.exe -m pip install -e '.[test]'
@@ -45,12 +45,12 @@ py -3.11 -m venv .venv
 & .\.venv\Scripts\python.exe scripts/main.py --mode report --results '.\results\analyze-a' --output '.\results\report-a'
 ```
 
-安装后可用 `.\.venv\Scripts\optosky-raman.exe` 替代 `python scripts/main.py`。在 Codex 中可说：“使用 `$optosky-raman-analysis` 分析这个目录中的全部原位 Raman CSV，先审计，再生成报告；未知实验条件保持空缺。”首次使用时如 Codex 未找到虚拟环境，提供项目目录及 `.venv\Scripts\python.exe` 位置。
+安装后可用 `.\.venv\Scripts\electrochemistry-raman.exe` 替代 `python scripts/main.py`。在 Codex 中可说：“使用 `$electrochemistry-raman-analysis` 分析这个目录中的全部原位 Raman CSV，先审计，再生成报告；未知实验条件保持空缺。”首次使用时如 Codex 未找到虚拟环境，提供项目目录及 `.venv\Scripts\python.exe` 位置。
 
 ## 工程结构
 
 ```text
-optosky-raman-analysis/
+electrochemistry-raman-analysis/
   SKILL.md                    Codex 调用与证据审查
   agents/openai.yaml          Codex 界面元数据
   pyproject.toml              Python 包和命令行入口
@@ -87,3 +87,9 @@ RamanSPy 来源：[项目](https://github.com/barahona-research-group/RamanSPy)�
 实际环境、108项软件测试及科学限制见 [VALIDATION.md](VALIDATION.md)。依赖版本快照见 requirements-tested.txt；该快照对应本次Windows/Python3.14验证，其他环境由pyproject.toml解析兼容版本。私人实验数据未随仓库发布，外部用户不能据此独立复现实验结论。
 
 对保存结果可执行 `python scripts/verify_run.py --results RESULTS --compare OTHER_RUN`，检查原始文件哈希、文本/数组保真、逐图文件及重复计算一致性。`--compare` 可省略。报告与源码压缩包分开保存；源码包不含用户原始CSV及虚拟环境。
+
+## 名称迁移
+
+自 v1.0.1 起，项目与 Skill 名为 `electrochemistry-raman-analysis`，显示名为 Electrochemistry Raman analysis。命令行入口为 `electrochemistry-raman`，保留 `optosky-raman` 命令兼容已有脚本。Python 内部模块仍为 `optosky_raman`，当前原始数据适配范围仍是 Optosky CSV。
+
+旧版本用户请在新虚拟环境安装新项目，避免新旧分发同时管理同一模块；在 Codex 中使用 `$electrochemistry-raman-analysis`。v1.0.0 保留作历史版本。

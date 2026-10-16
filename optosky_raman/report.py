@@ -49,7 +49,7 @@ def generate_report(results_dir: Path,output_dir: Path|None=None) -> dict:
         cautious_statement='“本批次部分相邻光谱达到描述性变化筛查判据；电位、时间和采集条件的贡献尚未分离，目前不足以确认特定工作态物相或重构机制。”'
     else:
         cautious_statement='“本次获得了可追溯光谱与数学特征；相邻谱未触发配置中的变化筛查判据，这不构成结构不变或不存在弱谱带的证明。”'
-    lines=['# Optosky 电化学原位 Raman 科研报告','',
+    lines=['# Electrochemistry Raman analysis 科研报告','',
         f"运行模式：`{mode}`；状态：`{data['status']}`；生成数据时间：{data['created_at']}。",'',
         '**本报告的数值来自程序计算；化学归属、结构演变和因果机制没有经过自动确认。**','',
         '## 1. 实验信息及缺失参数','',
@@ -122,6 +122,6 @@ def generate_report(results_dir: Path,output_dir: Path|None=None) -> dict:
         (output_dir/'report.md').write_text(text,encoding='utf-8'); outputs['markdown']=str(output_dir/'report.md')
     if 'html' in formats:
         body=markdown.markdown(text,extensions=['tables','fenced_code'])
-        html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Optosky Raman 科研报告</title><style>body{font-family:system-ui,"Microsoft YaHei",sans-serif;max-width:1160px;margin:32px auto;padding:0 24px;line-height:1.7;color:#17212d}img{max-width:100%}table{border-collapse:collapse;display:block;overflow:auto;font-size:13px}td,th{padding:6px 10px;border:1px solid #ccd3db}pre{overflow:auto;background:#f1f4f7;padding:16px}h2{margin-top:2em;border-bottom:1px solid #ccd3db}a{color:#145b96}</style>'+body+'</html>'
+        html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Electrochemistry Raman analysis 科研报告</title><style>body{font-family:system-ui,"Microsoft YaHei",sans-serif;max-width:1160px;margin:32px auto;padding:0 24px;line-height:1.7;color:#17212d}img{max-width:100%}table{border-collapse:collapse;display:block;overflow:auto;font-size:13px}td,th{padding:6px 10px;border:1px solid #ccd3db}pre{overflow:auto;background:#f1f4f7;padding:16px}h2{margin-top:2em;border-bottom:1px solid #ccd3db}a{color:#145b96}</style>'+body+'</html>'
         (output_dir/'report.html').write_text(html,encoding='utf-8'); outputs['html']=str(output_dir/'report.html')
     return outputs
